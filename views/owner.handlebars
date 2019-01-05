@@ -1,0 +1,90 @@
+
+<div class="container">
+	<h1>Store owner page</h1>
+	<h4>Here, the owner can add, delete or alter the inventory.</h4>
+	<br />
+	<br />
+	<br />
+
+	<div class="row">
+		<div class="col-4">
+		<form action="/add_product" method = "POST">
+		    <fieldset>
+		      <legend>Add an Item to the inventory:</legend>
+		      <label>Item Name:
+		        <input id="#" type="#" name="name" placeholder="Seiko Grand Snowflake">
+		      </label>
+		      <br />
+		      <label>Item Quantity:
+		          <input id="#" type="#" name="quantity" placeholder="50">
+		      </label>
+		      <br />
+		      <label>Item Price:
+		          <input id="#" type="#" name="price" placeholder="500">
+		      </label>
+		      <br />
+		      <br />
+		      <br />
+		      <input type="submit" id="submit">
+		    </fieldset>
+		</form>
+		</div> <!-- end col-4 -->
+		<div class="col-8">
+			<h4>Table will appear here on the right.</h4>
+			<table id="inventory" border="1" class="table">
+				<thead>
+				<tr id="invenHeaderRow">
+					<th>Product ID</th>
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Delete</th>
+					<th>Update Info</th>
+				</tr>
+				</thead>
+				<tbody>
+				{{#each display }}
+				<tr>
+					<td>{{product_id}}</td>
+					<td>{{name}}</td>
+					<td>{{quantity}}</td>
+					<td>{{price}}</td>
+					<td><button type="button" class="btn btn-danger btn-sm" onclick = "deletePerson({{product_id}})">Delete</button></td>
+					<td><a href = "/item/{{product_id}}"><button type="button" class="btn btn-info btn-sm">Update</button></a></td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div> <!-- End row -->
+
+	<br />
+	<br />
+	
+	<h4>This is the purchase history</h4>
+	<div class="row">
+			<table id="orderHistory" border="1" class="table">
+			<thead>
+			<tr id="orderHeaderRow">
+				<th>Account ID</th>
+				<th>Account Name</th>
+				<th>Product ID</th>
+				<th>Product Name</th>
+				<th>Quantity</th>
+			</tr>
+			</thead>
+			<tbody>
+			{{#each purchaseHistory}}
+			<tr>
+				<td>{{account_id}}</td>
+				<td>{{fullname}}</td>
+				<td>{{product_id}}</td>
+				<td>{{name}}</td>
+				<td>{{quantity}}</td>
+			</tr>
+			{{/each}}
+			</tbody>
+	</div> <!-- End row -->
+</div> <!-- end container -->
+
+

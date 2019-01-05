@@ -1,0 +1,8 @@
+<h1>Updating {{item.name}}</h1>
+
+<form id="update-item" action="/item" method="post">
+    Name: <input type="text" name= "name" value="{{item.name}}"><br>
+    Quantity: <input type="number" name="quantity" value="{{item.quantity}}"><br>
+    Price: <input type="number" name="price" value="{{item.price}}"><br>
+</form>
+<button onclick="updateItem({{item.product_id}})">Update</button>

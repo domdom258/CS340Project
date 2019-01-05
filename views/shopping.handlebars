@@ -1,0 +1,143 @@
+<div class="container">
+	<h1>This is the shop.</h1>
+	<h4>User can select an item a quantity, and then make a purchase. Or the user can select and item and leave a rating.</h4>
+	<br />
+	<br />
+	<br />
+
+	<h4>Inventory Table - Will have 2 views, the view that shows all the items.  And the other will show the results of an item search.</h4>
+	<div class="row">
+		<div class="col-8">
+			<table id="stock" border="1" class="table">
+				<thead>
+				<tr id="invenHeaderRow">
+					<th>Product ID</th>
+					<th>Name</th>
+					<th>In Stock</th>
+					<th>Price</th>
+					<th>Rating</th>
+				</tr>
+				</thead>
+				<tbody>
+				{{#each inventoryDisplay}}
+				<tr>
+					<td>{{product_id}}</td>
+					<td>{{name}}</td>
+					<td>{{quantity}}</td>
+					<td>{{price}}</td>
+					<td>{{rating}}</td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="col-4">
+			<form action="/search" method = "GET">
+			   <fieldset>
+			      <legend>Look for an item</legend>
+			      <label>Item Name:
+			        <input id="#" type="#" name="item" placeholder="Keyword">
+			      </label>
+			 
+			      <input type="submit" id="submit">
+			    </fieldset>
+			</form>
+		</div>
+	</div> <!-- End row 1 -->
+		
+	<br />
+	<br />
+	<br />
+
+	<h4>Buy Something!</h4>
+	<div class="row">
+		<div class="col-6">
+		
+			<form action = "/add_purchase" method = "POST">
+			<table id="rating" border="1">
+			<thead>
+				<tr id="ratingHeaderRow">
+					<th>Product Name</th>
+					<th>Quantity</th>
+					<th>Email</th>
+					<th>Buy Now</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<select name = "product_name" class="form-control">
+						{{#each items}}
+							<option>{{name}}</option>
+						{{/each}}
+						</select>
+					<td>
+						<input class="form-control" name="quantity"type="number" placeholder="0">
+					</td>
+					<td>
+						<input id="#" type="text" name="email" placeholder="example@gmail.com">
+					</td>
+					<td>
+						<button type="submit" class="btn btn-primary btn-sm">Buy</button>
+					</td>
+				</tr>	
+			</tbody>
+			</table>
+			</form>
+		</div>
+	</div> <!-- End Row 2 -->
+
+	<br />
+	<br />
+	<br />
+	
+	<h4>The user can select a product and leave a rating here.</h4>
+        <div class="row">
+                <div class="col-6">
+                	<form action = "/add_rating" method = "POST">
+                	<table id="rating" border="1">
+                	<thead>
+                    	<tr id="ratingHeaderRow">
+                        	<th>Product Name</th>
+                            <th>Leave Rating</th>
+                            <th>Submit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select name = "product_name" class="form-control">
+                                {{#each inv}}
+                                <option>{{name}}</option>
+                                {{/each}}
+                                </select>
+                            </td>
+                            <td>
+                                <select name = "rating" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+                                 </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                	</table>
+                </form>
+				</div>
+        </div>
+
+	<br />
+	<br />
+	<br />
+	
+</div>
